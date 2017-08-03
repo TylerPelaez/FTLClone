@@ -57,7 +57,7 @@ bool FTexture::loadFromFile( std::string path )
 	return m_Texture != NULL;
 }
 
-void FTexture::render( SDL_Rect* clip, SDL_Rect renderQuad, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE )
+void FTexture::render( SDL_Rect* clip, SDL_Rect renderQuad, double angle, SDL_Point* center, SDL_RendererFlip flip )
 {
 	SDL_RenderCopyEx( gRenderer, m_Texture, clip, &renderQuad, angle, center, flip );
 }

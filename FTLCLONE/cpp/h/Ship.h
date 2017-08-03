@@ -20,8 +20,8 @@ enum ALLEGIANCE
 
 enum WEAPON_ORIENTATION
 {
-	LEFT,
 	RIGHT,
+	LEFT,
 	UP
 };
 
@@ -103,6 +103,8 @@ public:
 	void update( float dt );
 
 	bool assignSystem( ShipSystem* system );
+
+	void render( SDL_Rect* clip = NULL ) override;
 
 };
 #endif

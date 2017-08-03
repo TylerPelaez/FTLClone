@@ -51,3 +51,12 @@ void Ship::assignRoom( Room* newRoom )
 	Rooms.push_back( newRoom );
 }
 
+void Ship::render( SDL_Rect* clip )
+{
+	RenderedObject::render( clip );
+	for ( auto& system : Systems )
+	{
+		system->render();
+	}
+}
+

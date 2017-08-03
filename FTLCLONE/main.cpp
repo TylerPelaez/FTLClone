@@ -93,7 +93,7 @@ bool loadMedia()
 	}
 	else
 	{
-		enemyShip->setPos( 500, 100 );
+		enemyShip->setPos( 800, 100 );
 	}
 
 
@@ -120,6 +120,7 @@ void render()
 	SDL_RenderClear( gRenderer );
 
 	playerShip->render();
+	enemyShip->render();
 
 	//Update screen
 	SDL_RenderPresent( gRenderer );
@@ -143,12 +144,12 @@ int main( int argc, char* args[] )
 	else
 	{
 		playerShip = new Ship(4,5, ALLEGIANCE::FEDERATION, "Kestrel", 10, 0, 0, 40, WEAPON_ORIENTATION::RIGHT);
-		enemyShip = new Ship(4,5, ALLEGIANCE::REBEL, "Federation Scout", 35, 20, 5, 10, WEAPON_ORIENTATION::UP);
+		enemyShip = new Ship(2,5, ALLEGIANCE::REBEL, "Federation Scout", 35, 20, 5, 10, WEAPON_ORIENTATION::UP);
 		playerShip->weaponPositions[0].push_back( 411 );
-		playerShip->weaponPositions[0].push_back( 101 );
+		playerShip->weaponPositions[0].push_back( 111 );
 
-		enemyShip->weaponPositions[0].push_back( 411 );
-		enemyShip->weaponPositions[0].push_back( 101 );
+		enemyShip->weaponPositions[0].push_back( 52 );
+		enemyShip->weaponPositions[0].push_back( 91 );
 
 		//Load media
 		if ( !loadMedia() )
@@ -163,11 +164,10 @@ int main( int argc, char* args[] )
 			weaponRoom->posY = 155;
 
 			ShipSystem* weapons = new WeaponSystem( weaponRoom, 10, 3, playerShip->maxWeapons );
-			Weapon* weaponToAdd = new Weapon( 10.0, 5 );
+			Weapon* weaponToAdd = new Weapon( 10.0, 5, playerShip->weaponOrientation );
 			weaponToAdd->loadSprite( "assets/Basic_Laser.png" );
-			weaponToAdd->setPos( playerShip->weaponPositions[0][0], playerShip->weaponPositions[0][1] );
 
-			( (WeaponSystem*)weapons )->addWeapon( weaponToAdd ); // 411, 101
+			( (WeaponSystem*)weapons )->addWeapon( weaponToAdd );
 
 			weaponRoom->assignSystem( weapons );
 			playerShip->assignRoom( weaponRoom );
@@ -178,7 +178,9 @@ int main( int argc, char* args[] )
 
 
 			weapons = new WeaponSystem( weaponRoom, 10, 3, enemyShip->maxWeapons );
-			weaponToAdd = new Weapon( 5.0, 1 );
+			weaponToAdd = new Weapon( 5.0, 1, enemyShip->weaponOrientation );
+			weaponToAdd->loadSprite( "assets/Basic_Laser.png" );
+
 			( (WeaponSystem*)weapons )->addWeapon( weaponToAdd );
 
 			weaponRoom->assignSystem( weapons );

@@ -28,5 +28,5 @@ void WeaponSystem::setWeaponActive( int index, bool active )
 		 return;
 
 	 weapons.push_back( weapon );
-	 weapon->setPosition()
+	 weapon->setPos( location->ship->getPosX() + location->ship->weaponPositions[weapons.size()-1][0], location->ship->getPosY() + location->ship->weaponPositions[weapons.size() - 1][1]);
  }

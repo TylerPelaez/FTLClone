@@ -22,7 +22,7 @@ public:
 
 	bool loadFromFile( std::string path );
 
-	void render( SDL_Rect* clip, SDL_Rect renderQuad, double angle, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE );
+	void render( SDL_Rect* clip, SDL_Rect renderQuad, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE );
 	
 	int getWidth() { return m_Width; }
 	int getHeight() { return m_Height; }

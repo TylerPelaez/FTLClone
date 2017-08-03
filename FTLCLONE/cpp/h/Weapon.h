@@ -17,7 +17,7 @@ class Weapon
 	int orientation;
 
 public:
-	Weapon( float _max, int _damage)
+	Weapon( float _max, int _damage, int _orientation)
 		: maxCharge(_max)
 		, payloadDamage(_damage)
 		, curCharge(0)
@@ -26,6 +26,7 @@ public:
 		, autoFire(false)
 		, posX(0)
 		, posY(0)
+		, orientation(_orientation)
 	{}
 
 	~Weapon() 
@@ -35,7 +36,7 @@ public:
 
 	virtual bool fire();
 
-	void loadSprite(std::string path, int orientation);
+	void loadSprite(std::string path);
 
 	void SetActive( bool on ) { active = on; }
 
